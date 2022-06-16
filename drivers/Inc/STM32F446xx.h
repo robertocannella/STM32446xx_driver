@@ -55,7 +55,7 @@
  * Common Peripherals on APB1 Bus (Low Speed)
  */
 
-#define I2C1_BASEADDR               0x40005400					// I2C1 Base Address
+#define I2C1_BASEADDR				0x40005400					// I2C1 Base Address
 #define I2C2_BASEADDR				0x40005800					// I2C2 Base Address
 #define I2C3_BASEADDR				0x40005C00					// I2C3 Base Address
 
@@ -67,7 +67,17 @@
 #define UART4_BASEADDR				0x40004C00					// UART4 Base Address
 #define UART4_BASEADDR				0x40005000					// UART5 Base Address
 
+/*
+ * Common Peripherals on APB2 Bus (Low Speed)
+ */
 
+#define SPI1_BASEADDR				0x40013000					// SPI1 Base Address
 
+#define USART1_BASEADDR				0x40011000					// USART1 Base Address
+#define USART6_BASEADDR				0x40011400					// USART6 Base Address
+
+#define EXTI_BASEADDR				0x40013C00					// EXTI Base Address
+
+#define SYSCFG_BASEADDR				0x40013800					// SYSCFG Base Address
 
 #endif /* INC_STM32F446XX_H_ */
