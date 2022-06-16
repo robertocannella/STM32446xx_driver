@@ -139,7 +139,6 @@ typedef struct {
 	__vo uint32_t CKGATENR;         // RCC clocks gated enable register
 	__vo uint32_t DCKCFGR2;         // RCC dedicated clocks configuration register 2
 
-
 }RCC_RegDef_t;
 
 
@@ -159,18 +158,16 @@ typedef struct {
 #define GPIOG		( GPIO_RegDef_t*( GPIOG_BASEADDR ) )
 #define GPIOH		( GPIO_RegDef_t*( GPIOH_BASEADDR ) )
 
-#define I2C1		()
-
-#define RCC			( RCC_RegDef_t* ( RCC_BASEADDR) )
+#define RCC         ( RCC_RegDef_t* ( RCC_BASEADDR) )
 
 
 /******************************************************************************************
  *
- * 				ENABLE MACROS
+ * 				PERIPHERAL CLOCK ENABLE/DISABLE MACROS
  */
 
 /*
- * GPIO peripheral clock enable macros
+ * GPIO peripheral clock enable/disable macros
  */
 
 #define GPIOA_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 0 )
@@ -182,21 +179,65 @@ typedef struct {
 #define GPIOG_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 6 )
 #define GPIOH_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 7 )
 
+#define GPIOA_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 0 )
+#define GPIOB_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 1 )
+#define GPIOC_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 2 )
+#define GPIOD_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 3 )
+#define GPIOE_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 4 )
+#define GPIOF_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 5 )
+#define GPIOG_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 6 )
+#define GPIOH_PCLK_DI() 		RCC->AHBENR[0] &= ~( 1 << 7 )
 /*
- * I2C peripheral clock enable macros
+ * I2C peripheral clock enable/disable macros
  */
 
 #define I2C1_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 21 )
 #define I2C2_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 22 )
 #define I2C3_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 23 )
-/*
- * SPI peripheral clock enable macros
- */
+
+#define I2C1_PLCK_DI()			RCC->APBENR[0] &= ~( 1 << 21 )
+#define I2C2_PLCK_DI()			RCC->APBENR[0] &= ~( 1 << 22 )
+#define I2C3_PLCK_DI()			RCC->APBENR[0] &= ~( 1 << 23 )
 
 /*
- * UART peripheral clock enable macros
+ * SPI peripheral clock enable/disable macros
  */
 
+#define SPI1_PLCK_EN()			RCC->APBENR[1] |= ( 1 << 12 )
+#define SPI2_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 14 )
+#define SPI3_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 15 )
+#define SPI4_PLCK_EN()			RCC->APBENR[1] |= ( 1 << 13 )
+
+#define SPI1_PLCK_DI()			RCC->APBENR[1] &= ~( 1 << 12 )
+#define SPI2_PLCK_DI()			RCC->APBENR[0] &= ~( 1 << 14 )
+#define SPI3_PLCK_DI()			RCC->APBENR[0] &= ~( 1 << 15 )
+#define SPI4_PLCK_DI()			RCC->APBENR[1] &= ~( 1 << 13 )
+
+/*
+ * USART peripheral clock enable/disable macros
+ */
+
+#define USART1_PCLK_EN()		RCC->APBENR[1] |= ( 1 << 4 ) )
+#define USART2_PCLK_EN()		RCC->APBENR[0] |= ( 1 << 17 ) )
+#define USART3_PCLK_EN()		RCC->APBENR[0] |= ( 1 << 18 ) )
+#define UART4_PCLK_EN()		    RCC->APBENR[0] |= ( 1 << 19 ) )
+#define UART5_PCLK_EN()		    RCC->APBENR[0] |= ( 1 << 20 ) )
+#define USART6_PCLK_EN()		RCC->APBENR[1] |= ( 1 << 5 ) )
+
+#define USART1_PCLK_DI()		RCC->APBENR[1] &= ~( 1 << 4 ) )
+#define USART2_PCLK_DI()		RCC->APBENR[0] &= ~( 1 << 17 ) )
+#define USART3_PCLK_DI()		RCC->APBENR[0] &= ~( 1 << 18 ) )
+#define UART4_PCLK_DI()		    RCC->APBENR[0] &= ~( 1 << 19 ) )
+#define UART5_PCLK_DI()		    RCC->APBENR[0] &= ~( 1 << 20 ) )
+#define USART6_PCLK_DI()		RCC->APBENR[1] &= ~( 1 << 5 ) )
+
+/*
+ * SYSCFG clock enable/disable macro
+ */
+
+#define SYSCFG_PCLK_EN()		RCC->APBENR[1] |= ( 1 << 14 ) )
+
+#define SYSCFG_PCLK_DI()		RCC->APBENR[1] &= ~( 1 << 14 ) )
 
 
 #endif /* INC_STM32F446XX_H_ */
