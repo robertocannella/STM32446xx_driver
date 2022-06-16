@@ -87,7 +87,7 @@
  * 				Peripheral register structure definitions (page 187)
  *
  * 				use:
- * 				GPIO_RegDef_t *pGPIOA = (GPIO_RegDef_t*)GPIOA_BASEADDR
+ * 				GPIO_RegDef_t *pGPIOA = (GPIO_RegDef_t*(GPIOA_BASEADDR))
  */
 
 typedef struct {
@@ -102,6 +102,7 @@ typedef struct {
 	__vo uint32_t AFR[2];       // Alternate Function Register          ( array[LOW,HIGH] )
 
 }GPIO_RegDef_t;
+
 
 /******************************************************************************************
  *
@@ -140,4 +141,53 @@ typedef struct {
 
 
 }RCC_RegDef_t;
+
+
+/******************************************************************************************
+ *
+ * 				Peripheral definitions
+ *
+ * 				Peripheral BASEADDR type casted to the xxx_RegDef_t
+ */
+
+#define GPIOA		( GPIO_RegDef_t*( GPIOA_BASEADDR ) )
+#define GPIOB		( GPIO_RegDef_t*( GPIOB_BASEADDR ) )
+#define GPIOC		( GPIO_RegDef_t*( GPIOC_BASEADDR ) )
+#define GPIOD		( GPIO_RegDef_t*( GPIOD_BASEADDR ) )
+#define GPIOE		( GPIO_RegDef_t*( GPIOE_BASEADDR ) )
+#define GPIOF		( GPIO_RegDef_t*( GPIOF_BASEADDR ) )
+#define GPIOG		( GPIO_RegDef_t*( GPIOG_BASEADDR ) )
+#define GPIOH		( GPIO_RegDef_t*( GPIOH_BASEADDR ) )
+
+#define I2C1		()
+
+#define RCC			( RCC_RegDef_t* ( RCC_BASEADDR) )
+
+/*
+ * GPIO peripheral clock enable macros
+ */
+
+#define GPIOA_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 0 )
+#define GPIOB_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 1 )
+#define GPIOC_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 2 )
+#define GPIOD_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 3 )
+#define GPIOE_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 4 )
+#define GPIOF_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 5 )
+#define GPIOG_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 6 )
+#define GPIOH_PCLK_EN() 		RCC->AHBENR[0] |= ( 1 << 7 )
+
+/*
+ * I2C peripheral clock enable macros
+ */
+
+/*
+ * SPI peripheral clock enable macros
+ */
+
+/*
+ * UART peripheral clock enable macros
+ */
+
+
+
 #endif /* INC_STM32F446XX_H_ */
