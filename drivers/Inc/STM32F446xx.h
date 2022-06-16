@@ -163,6 +163,12 @@ typedef struct {
 
 #define RCC			( RCC_RegDef_t* ( RCC_BASEADDR) )
 
+
+/******************************************************************************************
+ *
+ * 				ENABLE MACROS
+ */
+
 /*
  * GPIO peripheral clock enable macros
  */
@@ -180,6 +186,9 @@ typedef struct {
  * I2C peripheral clock enable macros
  */
 
+#define I2C1_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 21 )
+#define I2C2_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 22 )
+#define I2C3_PLCK_EN()			RCC->APBENR[0] |= ( 1 << 23 )
 /*
  * SPI peripheral clock enable macros
  */
