@@ -85,6 +85,9 @@
 /******************************************************************************************
  *
  * 				Peripheral register structure definitions (page 187)
+ *
+ * 				use:
+ * 				GPIO_RegDef_t *pGPIOA = (GPIO_RegDef_t*)GPIOA_BASEADDR
  */
 
 typedef struct {
@@ -100,4 +103,42 @@ typedef struct {
 
 }GPIO_RegDef_t;
 
+/******************************************************************************************
+ *
+ * 				RCC register structure definitions (page 171)
+ *
+ * 				use:
+ * 				RCC_RegDef_t *pRCCABP1 = (RCC_RegDef_t*)I2C1_BASEADDR
+ */
+
+typedef struct {
+
+	__vo uint32_t CR;				// RCC Clock Control Register
+	__vo uint32_t PLLCFGR;			// RCC PLL configuration register
+	__vo uint32_t CFGR;				// RCC clock configuration register
+	__vo uint32_t CIR;				// RCC clock interrupt register
+	__vo uint32_t AHB[3];			// RCC AHB[1,2,3] peripheral reset registers
+	__vo uint32_t reserved1;
+	__vo uint32_t APB[2];			// RCC APB[1,2] peripheral reset registers
+	__vo uint32_t reserved2[2];
+	__vo uint32_t AHBENR[3];		// RCC AHB[1,2,3] peripheral clock enable registers
+	__vo uint32_t reserved3;
+	__vo uint32_t APBENR[2];		// RCC APB[1,2] peripheral clock enable registers
+	__vo uint32_t reserved4[2];
+	__vo uint32_t AHBLPENR[3];		// RCC AHB[1,2,3] peripheral clock enable in low power mode registers
+	__vo uint32_t reserved5;
+	__vo uint32_t APBLPENR[2];		// RCC APB[1,2] peripheral clock enable in low power mode register
+	__vo uint32_t reserved6[2];
+	__vo uint32_t BDCR;				// RCC Backup domain control register
+	__vo uint32_t CSR;				// RCC clock control & status register
+	__vo uint32_t reserved7[2];
+	__vo uint32_t SSCGR;			// RCC spread spectrum clock generation register
+	__vo uint32_t PLLI2SCFGR;		// RCC PLLI2S configuration register
+	__vo uint32_t PLLSAICFGR;		// RCC PLL configuration register
+	__vo uint32_t DCKCFGR;			// RCC dedicated clock configuration register
+	__vo uint32_t CKGATENR;			// RCC clocks gated enable register
+	__vo uint32_t DCKCFGR2;			// RCC dedicated clocks configuration register 2
+
+
+}RCC_RegDef_t;
 #endif /* INC_STM32F446XX_H_ */
