@@ -88,15 +88,15 @@
  */
 
 typedef struct {
-	__vo uint32_t MODER;			// GPIO Port Mode Register				( input | GP out | alternate function | analog )
-	__vo uint32_t OTYPER;			// GPIO Output Type Register			( push/pull | open drain )
-	__vo uint32_t OSPEEDER;			// GPIO port output speed				( low | med | fast | high )
-	__vo uint32_t PUPDR;			// GPIO Pull Up/Pull Down				( off | pull-up | pull-down )
-	__vo uint32_t IDR;				// GPIO input data register				( read only )
-	__vo uint32_t ODR;				// GPIO output data register			( read | write )
-	__vo uint32_t BSRR;				// GPIO bit set register				( set | reset )
-	__vo uint32_t LCKR;				// GPIO configuration lock  			( active | not active }
-	__vo uint32_t AFR[2];			// Alternate Function Register 			( array[LOW,HIGH] )
+	__vo uint32_t MODER;        // GPIO Port Mode Register              ( input | GP out | alternate function | analog )
+	__vo uint32_t OTYPER;       // GPIO Output Type Register            ( push/pull | open drain )
+	__vo uint32_t OSPEEDER;     // GPIO port output speed               ( low | med | fast | high )
+	__vo uint32_t PUPDR;        // GPIO Pull Up/Pull Down               ( off | pull-up | pull-down )
+	__vo uint32_t IDR;          // GPIO input data register             ( read only )
+	__vo uint32_t ODR;          // GPIO output data register            ( read | write )
+	__vo uint32_t BSRR;         // GPIO bit set register                ( set | reset )
+	__vo uint32_t LCKR;         // GPIO configuration lock              ( active | not active }
+	__vo uint32_t AFR[2];       // Alternate Function Register          ( array[LOW,HIGH] )
 
 }GPIO_RegDef_t;
 
