@@ -8,6 +8,7 @@
 #ifndef INC_STM32F446XX_H_
 #define INC_STM32F446XX_H_
 #include <stdint.h>
+#define __vo volatile
 /*
  * Base Address of Flash and SRAM Memory (page 62)
  */
@@ -33,14 +34,14 @@
  * AHB1 Bus Peripherals (HIGH SPEED BUS)	(page 58)
  */
 
-#define GPIOA_BASEADDR              AHB1_BASEADDR + 0x0000      // Base address of GPIOA Register
-#define GPIOB_BASEADDR              AHB1_BASEADDR + 0x0400      // Base address of GPIOB Register
-#define GPIOC_BASEADDR              AHB1_BASEADDR + 0x0800      // Base address of GPIOC Register
-#define GPIOD_BASEADDR              AHB1_BASEADDR + 0x0C00      // Base address of GPIOD Register
-#define GPIOE_BASEADDR              AHB1_BASEADDR + 0x1000      // Base address of GPIOE Register
-#define GPIOF_BASEADDR              AHB1_BASEADDR + 0x1400      // Base address of GPIOF Register
-#define GPIOG_BASEADDR              AHB1_BASEADDR + 0x1800      // Base address of GPIOG Register
-#define GPIOH_BASEADDR              AHB1_BASEADDR + 0x1C00      // Base address of GPIOH Register
+#define GPIOA_BASEADDR			( AHB1_BASEADDR + 0x0000 )		// Base address of GPIOA Register
+#define GPIOB_BASEADDR			( AHB1_BASEADDR + 0x0400 )		// Base address of GPIOB Register
+#define GPIOC_BASEADDR			( AHB1_BASEADDR + 0x0800 )		// Base address of GPIOC Register
+#define GPIOD_BASEADDR			( AHB1_BASEADDR + 0x0C00 )		// Base address of GPIOD Register
+#define GPIOE_BASEADDR			( AHB1_BASEADDR + 0x1000 )		// Base address of GPIOE Register
+#define GPIOF_BASEADDR			( AHB1_BASEADDR + 0x1400 )		// Base address of GPIOF Register
+#define GPIOG_BASEADDR			( AHB1_BASEADDR + 0x1800 )		// Base address of GPIOG Register
+#define GPIOH_BASEADDR			( AHB1_BASEADDR + 0x1C00 )		// Base address of GPIOH Register
 
 #define CRC_BASEADDR                0x40023000U                 // Cyclic Redundancy Check Calculation Unit
 #define RCC_BASEADDR                0x40023800U                 // Reset Clock Control
@@ -79,5 +80,24 @@
 #define EXTI_BASEADDR				0x40013C00					// EXTI Base Address
 
 #define SYSCFG_BASEADDR				0x40013800					// SYSCFG Base Address
+
+
+/******************************************************************************************
+ *
+ * 				Peripheral register structure definitions (page 187)
+ */
+
+typedef struct {
+	__vo uint32_t MODER;		// GPIO Port Mode Register		( input | GP out | alternate function | analog )
+	__vo uint32_t OTYPER;		// GPIO Output Type Register 	( push/pull | open drain )
+	__vo uint32_t OSPEEDER;		// GPIO port output speed 		( low | med | fast | high )
+	__vo uint32_t PUPDR;		// GPIO Pull Up/Pull Down		( off | pull-up | pull-down )
+	__vo uint32_t IDR;			// GPIO input data register		( read only )
+	__vo uint32_t ODR;			// GPIO output data register	( read | write )
+	__vo uint32_t BSRR;			// GPIO bit set register 		( set | reset )
+	__vo uint32_t LCKR;			// GPIO configuration lock  	( active | not active }
+	__vo uint32_t AFR[2];		// Alternate Function Register 	( array[LOW,HIGH] )
+
+}GPIO_RegDef_t;
 
 #endif /* INC_STM32F446XX_H_ */
