@@ -34,52 +34,52 @@
  * AHB1 Bus Peripherals (HIGH SPEED BUS)	(page 58)
  */
 
-#define GPIOA_BASEADDR			( AHB1_BASEADDR + 0x0000 )		// Base address of GPIOA Register
-#define GPIOB_BASEADDR			( AHB1_BASEADDR + 0x0400 )		// Base address of GPIOB Register
-#define GPIOC_BASEADDR			( AHB1_BASEADDR + 0x0800 )		// Base address of GPIOC Register
-#define GPIOD_BASEADDR			( AHB1_BASEADDR + 0x0C00 )		// Base address of GPIOD Register
-#define GPIOE_BASEADDR			( AHB1_BASEADDR + 0x1000 )		// Base address of GPIOE Register
-#define GPIOF_BASEADDR			( AHB1_BASEADDR + 0x1400 )		// Base address of GPIOF Register
-#define GPIOG_BASEADDR			( AHB1_BASEADDR + 0x1800 )		// Base address of GPIOG Register
-#define GPIOH_BASEADDR			( AHB1_BASEADDR + 0x1C00 )		// Base address of GPIOH Register
+#define GPIOA_BASEADDR               ( AHB1_BASEADDR + 0x0000 )		// Base address of GPIOA Register
+#define GPIOB_BASEADDR               ( AHB1_BASEADDR + 0x0400 )		// Base address of GPIOB Register
+#define GPIOC_BASEADDR               ( AHB1_BASEADDR + 0x0800 )		// Base address of GPIOC Register
+#define GPIOD_BASEADDR               ( AHB1_BASEADDR + 0x0C00 )		// Base address of GPIOD Register
+#define GPIOE_BASEADDR               ( AHB1_BASEADDR + 0x1000 )		// Base address of GPIOE Register
+#define GPIOF_BASEADDR               ( AHB1_BASEADDR + 0x1400 )		// Base address of GPIOF Register
+#define GPIOG_BASEADDR               ( AHB1_BASEADDR + 0x1800 )		// Base address of GPIOG Register
+#define GPIOH_BASEADDR               ( AHB1_BASEADDR + 0x1C00 )		// Base address of GPIOH Register
 
-#define CRC_BASEADDR                0x40023000U                 // Cyclic Redundancy Check Calculation Unit
-#define RCC_BASEADDR                0x40023800U                 // Reset Clock Control
-#define FLASHIR_BASEADDR            0x40023C00U                 // Flash Interface Register
-#define BKPSRAM_BASEADDR            0x40024000U                 // Backup Internal Low Power Memory
-#define DMA1_BASEADDR               0x40026000U                 // Direct Memory Access Controller 1
-#define DMA2_BASEADDR               0x40026400U                 // Direct Memory Access Controller 2
-#define USBOTGHS_BASEADDR           0x40040000U                 // USB 480MPBs
+#define CRC_BASEADDR                 0x40023000U                 // Cyclic Redundancy Check Calculation Unit
+#define RCC_BASEADDR                 0x40023800U                 // Reset Clock Control
+#define FLASHIR_BASEADDR             0x40023C00U                 // Flash Interface Register
+#define BKPSRAM_BASEADDR             0x40024000U                 // Backup Internal Low Power Memory
+#define DMA1_BASEADDR                0x40026000U                 // Direct Memory Access Controller 1
+#define DMA2_BASEADDR                0x40026400U                 // Direct Memory Access Controller 2
+#define USBOTGHS_BASEADDR            0x40040000U                 // USB 480MPBs
 
 
 /*
  * Common Peripherals on APB1 Bus (Low Speed)
  */
 
-#define I2C1_BASEADDR				0x40005400					// I2C1 Base Address
-#define I2C2_BASEADDR				0x40005800					// I2C2 Base Address
-#define I2C3_BASEADDR				0x40005C00					// I2C3 Base Address
+#define I2C1_BASEADDR                0x40005400					// I2C1 Base Address
+#define I2C2_BASEADDR                0x40005800					// I2C2 Base Address
+#define I2C3_BASEADDR                0x40005C00					// I2C3 Base Address
 
-#define SPI2_BASEADDR				0x40003800					// SPI2 Base Address
-#define SPI3_BASEADDR				0x40003C00					// SPI3 Base Address
+#define SPI2_BASEADDR                0x40003800					// SPI2 Base Address
+#define SPI3_BASEADDR                0x40003C00					// SPI3 Base Address
 
-#define USART2_BASEADDR				0x40004400					// USART2 Base Address
-#define USART3_BASEADDR				0x40004800					// USART3 Base Address
-#define UART4_BASEADDR				0x40004C00					// UART4 Base Address
-#define UART4_BASEADDR				0x40005000					// UART5 Base Address
+#define USART2_BASEADDR              0x40004400					// USART2 Base Address
+#define USART3_BASEADDR	             0x40004800					// USART3 Base Address
+#define UART4_BASEADDR               0x40004C00					// UART4 Base Address
+#define UART4_BASEADDR               0x40005000					// UART5 Base Address
 
 /*
  * Common Peripherals on APB2 Bus (Low Speed)
  */
 
-#define SPI1_BASEADDR				0x40013000					// SPI1 Base Address
+#define SPI1_BASEADDR               0x40013000					// SPI1 Base Address
 
-#define USART1_BASEADDR				0x40011000					// USART1 Base Address
-#define USART6_BASEADDR				0x40011400					// USART6 Base Address
+#define USART1_BASEADDR             0x40011000					// USART1 Base Address
+#define USART6_BASEADDR             0x40011400					// USART6 Base Address
 
-#define EXTI_BASEADDR				0x40013C00					// EXTI Base Address
+#define EXTI_BASEADDR               0x40013C00					// EXTI Base Address
 
-#define SYSCFG_BASEADDR				0x40013800					// SYSCFG Base Address
+#define SYSCFG_BASEADDR             0x40013800					// SYSCFG Base Address
 
 
 /******************************************************************************************
@@ -149,16 +149,16 @@ typedef struct {
  * 				Peripheral BASEADDR type casted to the xxx_RegDef_t
  */
 
-#define GPIOA       ( GPIO_RegDef_t*( GPIOA_BASEADDR ) )
-#define GPIOB       ( GPIO_RegDef_t*( GPIOB_BASEADDR ) )
-#define GPIOC       ( GPIO_RegDef_t*( GPIOC_BASEADDR ) )
-#define GPIOD       ( GPIO_RegDef_t*( GPIOD_BASEADDR ) )
-#define GPIOE       ( GPIO_RegDef_t*( GPIOE_BASEADDR ) )
-#define GPIOF       ( GPIO_RegDef_t*( GPIOF_BASEADDR ) )
-#define GPIOG       ( GPIO_RegDef_t*( GPIOG_BASEADDR ) )
-#define GPIOH       ( GPIO_RegDef_t*( GPIOH_BASEADDR ) )
+#define GPIOA                ( GPIO_RegDef_t*( GPIOA_BASEADDR ) )
+#define GPIOB                ( GPIO_RegDef_t*( GPIOB_BASEADDR ) )
+#define GPIOC                ( GPIO_RegDef_t*( GPIOC_BASEADDR ) )
+#define GPIOD                ( GPIO_RegDef_t*( GPIOD_BASEADDR ) )
+#define GPIOE                ( GPIO_RegDef_t*( GPIOE_BASEADDR ) )
+#define GPIOF                ( GPIO_RegDef_t*( GPIOF_BASEADDR ) )
+#define GPIOG                ( GPIO_RegDef_t*( GPIOG_BASEADDR ) )
+#define GPIOH                ( GPIO_RegDef_t*( GPIOH_BASEADDR ) )
 
-#define RCC         ( RCC_RegDef_t* ( RCC_BASEADDR) )
+#define RCC                  ( RCC_RegDef_t* ( RCC_BASEADDR) )
 
 
 /******************************************************************************************
