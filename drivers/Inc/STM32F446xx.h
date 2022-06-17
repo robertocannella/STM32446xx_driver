@@ -101,7 +101,7 @@ typedef struct {
 	__vo uint32_t ODR;          // GPIO output data register            ( read | write )
 	__vo uint32_t BSRR;         // GPIO bit set register                ( set | reset )
 	__vo uint32_t LCKR;         // GPIO configuration lock              ( active | not active }
-	__vo uint32_t AFR[2];       // Alternate Function Register          ( array[LOW,HIGH] )
+	__vo uint32_t AFR[2];       // Alternate Function Registers         ( array[LOW,HIGH] )
 
 }GPIO_RegDef_t;
 

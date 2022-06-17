@@ -95,6 +95,9 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 	if (pGPIO_Handle->GPIOPinConfig.GPIO_PinMode  <= GPIO_MODE_ANALOG) // NOT interrupt mode
 	{
 		temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinMode << (2 * pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber));
+
+		// clear and set
+		pGPIO_Handle->pGPIOx->MODER &= ~( 0x3 << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber );
 		pGPIO_Handle->pGPIOx->MODER |= temp;
 
 	}else {	// Interrupt Mode
@@ -104,21 +107,42 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 	// configure the speed (takes 2 bits)
 	temp = 0;
 	temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinSpeed << (2 * pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber));
+	pGPIO_Handle->pGPIOx->OSPEEDER &= ~( 0x3 << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber );
 	pGPIO_Handle->pGPIOx->OSPEEDER |= temp;
 
 	// configure the pull up pull down (takes 2 bits)
 	temp = 0;
 	temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinPuPdCtrl << (2 * pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber));
+	// clear and set
+	pGPIO_Handle->pGPIOx->PUPDR &= ~( 0x3 << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber );
 	pGPIO_Handle->pGPIOx->PUPDR |= temp;
 
 	// output type (takes 1 bit)
 	temp = 0;
 	temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinOutPutTypeCtrl << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber);
+	// clear and set
+	pGPIO_Handle->pGPIOx->OTYPER &= ~( 0x1 << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber );
 	pGPIO_Handle->pGPIOx->OTYPER |= temp;
 
-	// alt function
+	// alt function (takes 4 bits in 2 different registers)  AFR[0] AFR[1]
 	if (pGPIO_Handle->GPIOPinConfig.GPIO_PinMode == GPIO_MODE_ALTFN){
-		// configure alternate function registers
+
+		// Step 1 Logic : divide the PinNumber by 8 to determine which register to use
+		//      PinNumber = 9 --> 9/8 = 1 --> Use AFR[1]
+		//      PinNumber = 3 --> 3/8 = 0 --> Use AFR[0]
+
+		// Step 2 Logic : use Modulus operator to determine which pin set to use:
+		//		PinNumber = 9 --> 9%8 = 1 --> AFR[1] = GPIO_PinAltFuncMode value << (1 * 4) (4 bits)
+		//		PinNumber = 3 --> 3%8 = 3 --> AFR[0] = GPIO_PinAltFuncMode value << (3 * 4) (4 bits)
+
+		uint8_t temp1, temp2;
+
+		temp1 = pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber / 8;
+		temp2 = pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber % 8;
+		// clear and set
+		pGPIO_Handle->pGPIOx->AFR[temp1] &= ~( 0xF << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber );
+		pGPIO_Handle->pGPIOx->AFR[temp1] |= (pGPIO_Handle->GPIOPinConfig.GPIO_PinAltFuncMode << temp2 * 4 );
+
 	}
 
 }
