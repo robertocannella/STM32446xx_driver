@@ -29,7 +29,7 @@ typedef struct{
 	GPIO_RegDef_t *pGPIOx;                 // The base address of the GPIO to which the pin belongs
 	GPIO_PinConfig_t GPIOPinConfig;        // The GPIO pin configuration settings
 
-}GPIO_handle_t;
+}GPIO_Handle_t;
 
 
 /*****************************************************************************************
@@ -39,22 +39,22 @@ typedef struct{
  */
 
 // Peripheral clock
-void GPIO_PeriClkCtrl(void);              // Enable the GPIO Peripheral Clock
+void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi);        // Enable the GPIO Peripheral Clock
 
 // Initialize/DeInit
-void GPIO_Init(void);
-void GPIO_DeInit(void);
+void GPIO_Init(GPIO_Handle_t *pGPIO_Handle);                          // Enable and Configure the pin
+void GPIO_DeInit(GPIO_RegDef_t *pGPIOx);                              // Send register back to reset state
 
 // Read/Write
-void GPIO_ReadFromInputPin(void);
-void GPIO_ReadFromInputPort(void);
-void GPIO_WriteToOutputPin(void);
-void GPIO_WriteToOutputPort(void);
-void GPIO_ToggleOutputPin(void);
+uint8_t  GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);                    // Read value of input pin
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx);                                      // Read all 16 bits of Port
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t value );		 // Write value to selected pin
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t value);                          // Write 16 bit value to port
+void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);                         // Toggle the value at the selected pin
 
 // IRQ/ISR Handling
-void GPIO_IRQConfig(void);                 // Interrupt configuration
-void GPIO_InterruptHandling(void);         // Handler for interrupt trigger condition
+void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnOrDi);                 // Interrupt configuration
+void GPIO_InterruptHandling(uint8_t PinNumber);                                              // Handler for interrupt trigger condition
 
 
 
