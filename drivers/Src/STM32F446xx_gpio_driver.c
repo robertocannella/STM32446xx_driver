@@ -25,42 +25,44 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
 {
 	if (EnOrDi == ENABLE)
 	{
-		if (GPIOx == GPIOA){
+		if (pGPIOx == GPIOA){
 			GPIOA_PCLK_EN();
-		}else if (GPIOx == GPIOB){
+		}else if (pGPIOx == GPIOB){
 			GPIOB_PCLK_EN();
-		}else if (GPIOx == GPIOC){
+		}else if (pGPIOx == GPIOC){
 			GPIOC_PCLK_EN();
-		}else if (GPIOx == GPIOD){
+		}else if (pGPIOx == GPIOD){
 			GPIOD_PCLK_EN();
-		}else if (GPIOx == GPIOE){
+		}else if (pGPIOx == GPIOE){
 			GPIOE_PCLK_EN();
-		}else if (GPIOx == GPIOF){
+		}else if (pGPIOx == GPIOF){
 			GPIOF_PCLK_EN();
-		}else if (GPIOx == GPIOG){
+		}else if (pGPIOx == GPIOG){
 			GPIOG_PCLK_EN();
-		}else if (GPIOx == GPIOH){
+		}else if (pGPIOx == GPIOH){
 			GPIOH_PCLK_EN();
 		}
-	}else
+	}
+	else
 	{
-		if (GPIOx == GPIOA){
+		if (pGPIOx == GPIOA){
 			GPIOA_PCLK_DI();
-		}else if (GPIOx == GPIOB){
+		}else if (pGPIOx == GPIOB){
 			GPIOB_PCLK_DI();
-		}else if (GPIOx == GPIOC){
+		}else if (pGPIOx == GPIOC){
 			GPIOC_PCLK_DI();
-		}else if (GPIOx == GPIOD){
+		}else if (pGPIOx == GPIOD){
 			GPIOD_PCLK_DI();
-		}else if (GPIOx == GPIOE){
+		}else if (pGPIOx == GPIOE){
 			GPIOE_PCLK_DI();
-		}else if (GPIOx == GPIOF){
+		}else if (pGPIOx == GPIOF){
 			GPIOF_PCLK_DI();
-		}else if (GPIOx == GPIOG){
+		}else if (pGPIOx == GPIOG){
 			GPIOG_PCLK_DI();
-		}else if (GPIOx == GPIOH){
+		}else if (pGPIOx == GPIOH){
 			GPIOH_PCLK_DI();
 		}
+	}
 
 }
 /*********************************************************************
@@ -78,6 +80,17 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
  */
 void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 {
+	// configure the mode input, output, AF, analog
+
+	//pGPIO_Handle->pGPIOx->MODER = pGPIO_Handle->GPIOPinConfig->GPIO_PinMode;
+	// speed
+
+	// Pu PD
+
+	// output type
+
+	// alt function
+
 }
 /*********************************************************************
  * @fn      		  - GPIO_DeInit
@@ -108,6 +121,7 @@ void GPIO_DeInit(GPIO_RegDef_t *pGPIOx){
  * @Note              -
  */
 uint8_t  GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
+	return 0;
 }
 /*********************************************************************
  * @fn      		  - GPIO_ReadFromInputPort
@@ -123,7 +137,7 @@ uint8_t  GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
  * @Note              -
  */
 uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx){
-
+	return 0;
 
 }
 /*********************************************************************
