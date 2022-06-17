@@ -80,7 +80,13 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
  *                      by 2 as each GPIO Pin Mode takes up two bits.  For example, If the user passes in the
  *                      PinNumber as GPIO_PIN_6, and a PinMode of GPIO_MODE_ANALOG, the math computes as:
  *
- *                      temp = (11 << (2 * 6)
+ *						uint32_t temp = 0; --> 0000000000000000
+ *                                             0000000000000000
+ *
+ *                                                              0000000000000000      000000000000000
+ *                      temp = (3 << (2 * 6) --> (3 << 12)  --> 0000000000000011  --> 001100000000000
+ *                                                                             ^         ^
+ *                      register |= temp	// BITWISE OR to set
  */
 void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 {
@@ -89,7 +95,7 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 	if (pGPIO_Handle->GPIOPinConfig.GPIO_PinMode  <= GPIO_MODE_ANALOG) // NOT interrupt mode
 	{
 		temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinMode << (2 * pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber));
-		pGPIO_Handle->pGPIOx->MODER = temp;
+		pGPIO_Handle->pGPIOx->MODER |= temp;
 
 	}else {	// Interrupt Mode
 
@@ -98,21 +104,21 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 	// configure the speed (takes 2 bits)
 	temp = 0;
 	temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinSpeed << (2 * pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber));
-	pGPIO_Handle->pGPIOx->OSPEEDER = temp;
+	pGPIO_Handle->pGPIOx->OSPEEDER |= temp;
 
 	// configure the pull up pull down (takes 2 bits)
 	temp = 0;
 	temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinPuPdCtrl << (2 * pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber));
-	pGPIO_Handle->pGPIOx->PUPDR = temp;
+	pGPIO_Handle->pGPIOx->PUPDR |= temp;
 
 	// output type (takes 1 bit)
 	temp = 0;
 	temp = (pGPIO_Handle->GPIOPinConfig.GPIO_PinOutPutTypeCtrl << pGPIO_Handle->GPIOPinConfig.GPIO_PinNumber);
-	pGPIO_Handle->pGPIOx->OTYPER = temp;
+	pGPIO_Handle->pGPIOx->OTYPER |= temp;
 
 	// alt function
 	if (pGPIO_Handle->GPIOPinConfig.GPIO_PinMode == GPIO_MODE_ALTFN){
-		// configure alternate funtion registers
+		// configure alternate function registers
 	}
 
 }
