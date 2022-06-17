@@ -7,7 +7,9 @@
 
 #ifndef INC_STM32F446XX_H_
 #define INC_STM32F446XX_H_
+
 #include <stdint.h>
+
 #define __vo volatile
 /*
  * Base Address of Flash and SRAM Memory (page 62)
@@ -149,16 +151,16 @@ typedef struct {
  * 				Peripheral BASEADDR type casted to the xxx_RegDef_t
  */
 
-#define GPIOA                ( GPIO_RegDef_t*( GPIOA_BASEADDR ) )
-#define GPIOB                ( GPIO_RegDef_t*( GPIOB_BASEADDR ) )
-#define GPIOC                ( GPIO_RegDef_t*( GPIOC_BASEADDR ) )
-#define GPIOD                ( GPIO_RegDef_t*( GPIOD_BASEADDR ) )
-#define GPIOE                ( GPIO_RegDef_t*( GPIOE_BASEADDR ) )
-#define GPIOF                ( GPIO_RegDef_t*( GPIOF_BASEADDR ) )
-#define GPIOG                ( GPIO_RegDef_t*( GPIOG_BASEADDR ) )
-#define GPIOH                ( GPIO_RegDef_t*( GPIOH_BASEADDR ) )
+#define GPIOA                ( ( GPIO_RegDef_t*)GPIOA_BASEADDR   )
+#define GPIOB                ( ( GPIO_RegDef_t*) GPIOB_BASEADDR  )
+#define GPIOC                ( ( GPIO_RegDef_t*) GPIOC_BASEADDR  )
+#define GPIOD                ( ( GPIO_RegDef_t*) GPIOD_BASEADDR  )
+#define GPIOE                ( ( GPIO_RegDef_t*) GPIOE_BASEADDR  )
+#define GPIOF                ( ( GPIO_RegDef_t*) GPIOF_BASEADDR  )
+#define GPIOG                ( ( GPIO_RegDef_t*) GPIOG_BASEADDR  )
+#define GPIOH                ( ( GPIO_RegDef_t*) GPIOH_BASEADDR  )
 
-#define RCC                  ( RCC_RegDef_t* ( RCC_BASEADDR) )
+#define RCC                  ( ( RCC_RegDef_t*) RCC_BASEADDR )
 
 
 /******************************************************************************************
@@ -170,23 +172,23 @@ typedef struct {
  * GPIO peripheral clock enable/disable macros
  */
 
-#define GPIOA_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 0 )
-#define GPIOB_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 1 )
-#define GPIOC_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 2 )
-#define GPIOD_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 3 )
-#define GPIOE_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 4 )
-#define GPIOF_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 5 )
-#define GPIOG_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 6 )
-#define GPIOH_PCLK_EN()       RCC->AHBENR[0] |= ( 1 << 7 )
+#define GPIOA_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 0 ))
+#define GPIOB_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 1 ))
+#define GPIOC_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 2 ))
+#define GPIOD_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 3 ))
+#define GPIOE_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 4 ))
+#define GPIOF_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 5 ))
+#define GPIOG_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 6 ))
+#define GPIOH_PCLK_EN()       (RCC->AHBENR[0] |= ( 1 << 7 ))
 
-#define GPIOA_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 0 )
-#define GPIOB_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 1 )
-#define GPIOC_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 2 )
-#define GPIOD_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 3 )
-#define GPIOE_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 4 )
-#define GPIOF_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 5 )
-#define GPIOG_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 6 )
-#define GPIOH_PCLK_DI()       RCC->AHBENR[0] &= ~( 1 << 7 )
+#define GPIOA_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 0 ))
+#define GPIOB_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 1 ))
+#define GPIOC_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 2 ))
+#define GPIOD_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 3 ))
+#define GPIOE_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 4 ))
+#define GPIOF_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 5 ))
+#define GPIOG_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 6 ))
+#define GPIOH_PCLK_DI()       (RCC->AHBENR[0] &= ~( 1 << 7 ))
 /*
  * I2C peripheral clock enable/disable macros
  */
