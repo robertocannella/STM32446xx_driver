@@ -21,8 +21,46 @@
  * @Note              -  none
  */
 
-void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi){
-
+void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
+{
+	if (EnOrDi == ENABLE)
+	{
+		if (GPIOx == GPIOA){
+			GPIOA_PCLK_EN();
+		}else if (GPIOx == GPIOB){
+			GPIOB_PCLK_EN();
+		}else if (GPIOx == GPIOC){
+			GPIOC_PCLK_EN();
+		}else if (GPIOx == GPIOD){
+			GPIOD_PCLK_EN();
+		}else if (GPIOx == GPIOE){
+			GPIOE_PCLK_EN();
+		}else if (GPIOx == GPIOF){
+			GPIOF_PCLK_EN();
+		}else if (GPIOx == GPIOG){
+			GPIOG_PCLK_EN();
+		}else if (GPIOx == GPIOH){
+			GPIOH_PCLK_EN();
+		}
+	}else
+	{
+		if (GPIOx == GPIOA){
+			GPIOA_PCLK_DI();
+		}else if (GPIOx == GPIOB){
+			GPIOB_PCLK_DI();
+		}else if (GPIOx == GPIOC){
+			GPIOC_PCLK_DI();
+		}else if (GPIOx == GPIOD){
+			GPIOD_PCLK_DI();
+		}else if (GPIOx == GPIOE){
+			GPIOE_PCLK_DI();
+		}else if (GPIOx == GPIOF){
+			GPIOF_PCLK_DI();
+		}else if (GPIOx == GPIOG){
+			GPIOG_PCLK_DI();
+		}else if (GPIOx == GPIOH){
+			GPIOH_PCLK_DI();
+		}
 
 }
 /*********************************************************************
@@ -30,7 +68,7 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi){
  *
  * @brief             - Enable and Configure the pin
  *
- * @param[in]         -
+ * @param[in]         - Pin configuration structure for the GPIO
  * @param[in]         -
  * @param[in]         -
  *
@@ -38,14 +76,15 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi){
  *
  * @Note              -
  */
-void GPIO_Init(GPIO_Handle_t *pGPIO_Handle){
+void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
+{
 }
 /*********************************************************************
  * @fn      		  - GPIO_DeInit
  *
  * @brief             - Send register back to reset state
  *
- * @param[in]         -
+ * @param[in]         - base address of the GPIO peripheral
  * @param[in]         -
  * @param[in]         -
  *
@@ -60,8 +99,8 @@ void GPIO_DeInit(GPIO_RegDef_t *pGPIOx){
  *
  * @brief             - Read value of input pin
  *
- * @param[in]         -
- * @param[in]         -
+ * @param[in]         - base address of the GPIO peripheral
+ * @param[in]         - pin number
  * @param[in]         -
  *
  * @return            -
@@ -75,7 +114,7 @@ uint8_t  GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
  *
  * @brief             - Read all 16 bits of Port
  *
- * @param[in]         -
+ * @param[in]         - base address of the GPIO peripheral
  * @param[in]         -
  * @param[in]         -
  *
@@ -92,9 +131,9 @@ uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx){
  *
  * @brief             - Write value to selected pin
  *
- * @param[in]         -
- * @param[in]         -
- * @param[in]         -
+ * @param[in]         - base address of the GPIO peripheral
+ * @param[in]         - pin number
+ * @param[in]         - GPIO_PIN_SET or GPIO_PIN_RESET
  *
  * @return            -
  *
@@ -161,7 +200,7 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnOrDi){
  *
  * @Note              -
  */
-void GPIO_InterruptHandling(uint8_t PinNumber){                                              n
+void GPIO_InterruptHandling(uint8_t PinNumber){
 }
 
 

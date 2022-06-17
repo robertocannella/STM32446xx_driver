@@ -248,6 +248,6 @@ typedef struct {
 #define DISABLE                 0
 #define SET                     ENABLE
 #define RESET                   DISABLE
-#define GPIO_PIN_SET				SET
+#define GPIO_PIN_SET			SET
 #define GPIO_PIN_RESET			RESET
 #endif /* INC_STM32F446XX_H_ */
