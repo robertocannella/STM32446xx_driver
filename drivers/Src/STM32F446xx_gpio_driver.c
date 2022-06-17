@@ -266,8 +266,8 @@ void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t value){
  *
  * @brief             - Toggle the value at the selected pin
  *
- * @param[in]         -
- * @param[in]         -
+ * @param[in]         - base address of the GPIO peripheral
+ * @param[in]         - pin number
  * @param[in]         -
  *
  * @return            -
@@ -275,6 +275,8 @@ void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t value){
  * @Note              -
  */
 void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
+
+	pGPIOx->ODR ^= (1 << PinNumber);  // XOR will return the NOT
 }
 /*********************************************************************
  * @fn      		  - GPIO_IRQConfig
