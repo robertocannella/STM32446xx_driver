@@ -80,7 +80,7 @@ void GPIO_PeriClkCtrl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
  *                      by 2 as each GPIO Pin Mode takes up two bits.  For example, If the user passes in the
  *                      PinNumber as GPIO_PIN_6, and a PinMode of GPIO_MODE_ANALOG, the math computes as:
  *
- *						uint32_t temp = 0; --> 0000000000000000
+ *                      uint32_t temp = 0; --> 0000000000000000
  *                                             0000000000000000
  *
  *                                                              0000000000000000      000000000000000
