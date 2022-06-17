@@ -160,6 +160,25 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
  * @Note              -
  */
 void GPIO_DeInit(GPIO_RegDef_t *pGPIOx){
+
+	if (pGPIOx == GPIOA){
+		GPIOA_REG_RESET();
+	}else if (pGPIOx == GPIOB){
+		GPIOB_REG_RESET();
+	}else if (pGPIOx == GPIOC){
+		GPIOC_REG_RESET();
+	}else if (pGPIOx == GPIOD){
+		GPIOD_REG_RESET();
+	}else if (pGPIOx == GPIOE){
+		GPIOE_REG_RESET();
+	}else if (pGPIOx == GPIOF){
+		GPIOF_REG_RESET();
+	}else if (pGPIOx == GPIOG){
+		GPIOG_REG_RESET();
+	}else if (pGPIOx == GPIOH){
+		GPIOH_REG_RESET();
+	}
+
 }
 /*********************************************************************
  * @fn      		  - GPIO_ReadFromInputPin
@@ -170,12 +189,17 @@ void GPIO_DeInit(GPIO_RegDef_t *pGPIOx){
  * @param[in]         - pin number
  * @param[in]         -
  *
- * @return            -
+ * @return            - 0 or 1
  *
  * @Note              -
  */
 uint8_t  GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
-	return 0;
+
+	// Logic: Shift the requested pin to the right most position (LSB)
+	//        Mask the all except the first bit
+	uint8_t value;
+	value = (uint8_t)( pGPIOx->IDR  >> PinNumber ) & 0x00000001;
+	return value;
 }
 /*********************************************************************
  * @fn      		  - GPIO_ReadFromInputPort
@@ -186,12 +210,16 @@ uint8_t  GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
  * @param[in]         -
  * @param[in]         -
  *
- * @return            -
+ * @return            - a 16 bit representation of the data at the port
  *
  * @Note              -
  */
 uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx){
-	return 0;
+	// Logic: Shift the requested pin to the right most position (LSB)
+	//        Mask the all except the first bit
+	uint16_t value;
+	value = (uint16_t)( pGPIOx->IDR);
+	return value;
 
 }
 /*********************************************************************
