@@ -21,7 +21,11 @@ int main(void){
 
 
 
-	/*        Internal Pull UP
+	/*
+	 * The default state of GPIO Pin is Floating (HI-z) High impedance.  Not ideal
+	 * Either pull up or pull down.
+	 *
+	 *         Internal Pull UP
 	 *
 	 *             +  Vcc
 	 *             |
@@ -31,6 +35,9 @@ int main(void){
 	 *    ----<]------[___]--* pin
 	 *   buffer         |
 	 *
+	 *
+	 *
+
 	 *
 	 *
 	 *         Internal Pull Down
@@ -45,6 +52,38 @@ int main(void){
 	 *            ___
 	 *             -
 	 *
+	 *
+	 *         Internal Pull up with Open Drain output type
+	 *         Writing 1 will drive led up through resistor
+	 *         Writing 0 will drive led down to ground
+	 *
+	 *                 * internal pull-up 10k-50k Ohm (this model)
+	 *                 |
+	 *                 z R1
+	 *                 Z    _   pin     LED
+	 *                _|---[_]-*-----[> ----
+	 *    0/1       _|                \\   |
+	 *    ---[>*---[__                     |
+	 *     invert    |                     |
+	 *     buffer    |                     |
+	 *               |                    ___
+	 *              ___                    -
+	 *               -
+	 *
+	 *        Push-Pull configuration does not require any pull-up/pull-down resistor
+	 *
+	 *                       + Vcc
+	 *                       |
+	 *            inverted __|
+	 *           |-----*[ |__
+	 *    0/1    |           |      __       LED
+	 *    --[>*--|           |-----[__]-*---[>-----
+	 *   invert  |         __|               \\   |
+	 *   buffer  |------[ |__                     Z
+	 *                       |                    z  Current limiting Resistor
+	 *                       |                    |
+	 *                      ___                  ___
+	 *                       -                    -
 	 *
 	 */
 
