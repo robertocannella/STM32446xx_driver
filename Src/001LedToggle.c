@@ -21,14 +21,41 @@ int main(void){
 
 
 
+	/*        Internal Pull UP
+	 *
+	 *             +  Vcc
+	 *             |
+	 *             z R1
+	 *             Z
+	 *   input     |   _|_
+	 *    ----<]------[___]--* pin
+	 *   buffer         |
+	 *
+	 *
+	 *
+	 *         Internal Pull Down
+	 *
+	 *
+	 *   input         _|_
+	 *    ----<]------[___]--* pin
+	 *   buffer    |    |
+	 *             Z
+	 *             z R2
+	 *             |
+	 *            ___
+	 *             -
+	 *
+	 *
+	 */
+
 	GPIO_Handle_t GpioLed;
 
 	GpioLed.pGPIOx = GPIOA;
 	GpioLed.GPIOPinConfig.GPIO_PinNumber = GPIO_PIN_5;
 	GpioLed.GPIOPinConfig.GPIO_PinMode = GPIO_MODE_OUT;
 	GpioLed.GPIOPinConfig.GPIO_PinSpeed = GPIO_OP_SPD_FAST;
-	GpioLed.GPIOPinConfig.GPIO_PinOutPutTypeCtrl = GPIO_OP_TYPE_PP;
-	GpioLed.GPIOPinConfig.GPIO_PinPuPdCtrl = GPIO_NO_PUPD;
+	GpioLed.GPIOPinConfig.GPIO_PinOutPutTypeCtrl = GPIO_OP_TYPE_OD;
+	GpioLed.GPIOPinConfig.GPIO_PinPuPdCtrl = GPIO_PIN_PU;
 
 	GPIO_PeriClkCtrl(GPIOA, ENABLE);
 	GPIO_Init(&GpioLed);

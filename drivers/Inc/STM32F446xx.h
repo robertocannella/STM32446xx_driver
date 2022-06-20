@@ -263,8 +263,8 @@ typedef struct {
 #define DISABLE                 0
 #define SET                     ENABLE
 #define RESET                   DISABLE
-#define GPIO_PIN_SET			SET
-#define GPIO_PIN_RESET			RESET
+#define GPIO_PIN_SET            SET
+#define GPIO_PIN_RESET          RESET
 
 
 #include "STM32F446xx_gpio_driver.h"
