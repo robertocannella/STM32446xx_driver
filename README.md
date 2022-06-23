@@ -7,11 +7,17 @@ This driver was developed specifically for STM43446re Nucleo Board.
 # GPIO API Samples
 ## 001LedToggle:
 
-The onboard toggle of the STM32F446re Nucleo Board is connected to 
 
+### Use: Blink onboard LED
 
-Figure 10 to Figure 26 show the signals connected by default to ARDUINO® Uno V3
-connectors (CN5, CN6, CN8, CN9) and to ST morpho connector (CN7 and CN10), for each
-STM32 Nucleo board.
+The STM32F446re Nucleo Board has onboard green LED (LED2) connected to Port A5 as
+show in the documentation:
+![STM32F446re-extenstion-connectors](Documents/SMT32F446re-ExtConnectors.png?raw=true "Title")
+
+To configure a General Purpose Input/Output Port, first we must create an  instance of ```GPIO_Handle_t``` which points to the correct Port.  Here we give name the handle GPIOLed.  Using this handle, we can configure the specfic pin and initialize it.  
+
 
 ![STM32F446re-pinout](Documents/SMT32F446re-PinOut.png?raw=true "Title")
+
+
+
