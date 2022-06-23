@@ -14,4 +14,4 @@ Figure 10 to Figure 26 show the signals connected by default to ARDUINO® Uno V3
 connectors (CN5, CN6, CN8, CN9) and to ST morpho connector (CN7 and CN10), for each
 STM32 Nucleo board.
 
-![STM32F446re-pinout](./Documents/STM32F446re-PinOut.png?raw=true "Title")
+![STM32F446re-pinout](Documents/SMT32F446re-PinOut.png?raw=true "Title")
