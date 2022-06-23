@@ -1,6 +1,8 @@
 # STM32446xx_driver
 Drivers for STM32446xx
 
+![STM32F446re-pinout](Documents/SMT32F446re-PinOut.png?raw=true "Title")
+
 This driver was developed specifically for STM43446re Nucleo Board. 
 
 # How to use this Driver: 
@@ -17,7 +19,7 @@ show in the documentation:
 To configure a General Purpose Input/Output Port, first we must create an  instance of ```GPIO_Handle_t``` which points to the correct Port.  Here we give name the handle GPIOLed.  Using this handle, we can configure the specfic pin and initialize it.  
 
 
-![STM32F446re-pinout](Documents/SMT32F446re-PinOut.png?raw=true "Title")
+
 
 
 
